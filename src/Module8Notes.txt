@@ -1,0 +1,39 @@
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 111 : Setting Up the Project  \\
+/////////////////////////////////////////////////////////////////////
+
+So First we head to the general folder we want our project to be located: BurgerBuilder
+using the command line
+
+Then we run npx create-react-app burgerbuilder (name but must be all lowercase)
+(See Create-React-App Gitghub page for instructions)
+
+Then when we want to enable CSS Modules so we run react-scripts eject
+Say yes, we want to eject
+Now when node finishes running we go to config/ webpack.config.dev.js
+
+Hit ctrl-F and search for css-loader and then add this code to this:
+
+                  modules: true,
+                  localIdentName: '[name]__[local]__[hash:base64:5]'
+
+Then we copy these two added lines,
+got to webpack.config.prod.js and repeat these 2 steps.
+Then Save!
+
+Now we are set up for CSS Modules 
+
+Now we can clean up a little
+    Delete  -Logo.svg 
+            -import statement for logo in App.js
+            -The JSX inside the root div tags in App.js 
+            -and className for root div 
+            -App.css import statement
+            -App.css file also.  
+
+Also we want to change the font we use from sans-serif to open sans 
+We will find it in google fonts and copy the cdn link  into the index.html file (inside public)
+just above the title tags 
+
+And we will change the title to MyBurger.  
+And it is time to move on!
