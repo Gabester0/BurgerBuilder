@@ -37,3 +37,79 @@ just above the title tags
 
 And we will change the title to MyBurger.  
 And it is time to move on!
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 112 : Creating a Layout Component  \\
+/////////////////////////////////////////////////////////////////////
+
+So now we are going to start building the project!
+
+First we are going to add 2 folders to the src folder: components and containers
+
+Remember: containers are basically stateful components and components are stateless components
+that are ususally functional.  
+
+The components and containers folders are a classic set-up in React.  They can be thought of
+as the 2 primary branches of the app.  
+
+Other typical folders are assets and redux, which we haven't touched yet.  
+
+We will add assets folder to src,
+    and we will add Layout folder, and Layout.js to components since Layout is, for now at 
+    least, stateless.  
+
+Since this is a stateless functional comp we will store the function in a const layout 
+and we will make the value an arrow function.  
+
+So now we will write some of this Layout.js file.  
+
+We will import React from react
+
+Then inside the arrow function we will return a div with the text Toolbar, SideDrawr,
+and Backdrop to represent what components we will later make and use here.  
+
+Then we will use the standard HTML tags main 
+    then inside these tags { props.children }.
+
+So this is good, but we are getting an error.
+        why?
+because we have 2 adjacent divs.  We need a root div 
+
+So we could:
+    -a) write an array that contians both of these and then map the array. 
+    -b) Wrap both of these to elements in a root div tag.
+    -c) or we could Write an HOC that returns these.  
+
+We will go with option C.
+
+We will make a Auxilliary.js file.  (video uses Aux.js but we don't want to do that in Windows)
+We will create  a folder inside containers called hoc because the HOCs are just going to return
+children.  
+This file will just consist of const auxilliary = (props)=> props.children; 
+and then we export default auxilliary;
+
+Now we can import Auxilliary into Layout.js using capitol A as we do for all custom components 
+that we create.  
+Note that we don't (at the end of the file path) type .js because our build process will 
+automatically add .js for all javascript files.  
+
+Now in Layout.js we add Auxilliary tags around all our JSX.
+    Make sure we pass props as an argument to our layout function   
+        and then we export default layout 
+
+Now we are ready to use Layout 
+We could go to the index.js file and import and use the Layout component as our root component.
+While this is a valid option, we aren't going to do that. 
+This way, if we want to , we can add some state to the root component or conditionally render
+ different layouts we could do that.  
+
+So we just use single dot (to stay in the same level/folder) instead of 2 dots (to go up a 
+whole level/folder) like this: 
+        import Layout from './components/Layout/Layout';
+
+Now we will just add layout tags inside the empty div.
+    And add <p>Test</p> to test it out.  
+
+And we will quickly add our font in the index.css file as our preferred choice.  
+
+And moving on.  
