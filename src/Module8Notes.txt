@@ -113,3 +113,76 @@ Now we will just add layout tags inside the empty div.
 And we will quickly add our font in the index.css file as our preferred choice.  
 
 And moving on.  
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 113 : Starting implementation of BurgerBuilder  \\
+/////////////////////////////////////////////////////////////////////
+
+Steps we are taking:
+
+    -Add BurgerBuilder folder and .js file inside containers
+
+    -make it a class extends Component because it will be stateful
+
+    -Put 2 divs inside with Burger and Build Controls text 
+
+    -export and use in App 
+
+    -Adding simple styling.  
+
+    -Create a Layout.css file and a class to give the elements margin.
+
+    -And we import classes from './Layout.css' 
+
+    -And add a className property to our main tags.  
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 114 : Adding a Dynamic Ingredient Component  \\
+/////////////////////////////////////////////////////////////////////  
+
+This Lecture:
+    -Adding a Burger folder to components folder for all Burger items/files 
+
+    -It is important to have a logical folder structure that is organizing and logical 
+        when you are working in React.  In React projects there are a lot of granular files
+        and organization will help.  
+            It is a good rule of thumb to always have an initial split of componens & containers
+                And then within those to have folders that mirror the features of the project
+
+    -So in that trend we will add a Burger.js file to the folder we just made
+     
+    -We add a BurgerIndredient folder and a BurgerIndredient.js file to that. 
+
+    -We may need to add files like Lettuc/Salad, Meat, etc.  
+
+    -He has a file of CSS images representing the burger ingredients.  We will save this 
+        as BurgerIndredient.css inside the folder with same name.  
+    
+    -So now in BurgerIndredient.js we create a functional component and save it to the const
+        burgerIngredient.
+
+    -Import React and export default burgerIngredient
+
+    -Now we are going to need some logic to determine which ingredients to return.  
+
+    -First we are going to define a ingredients const and set its value to null
+
+    -and we will use a switch statement for the js logic.  
+        -And we will pass props.type as an argument so we can analyze the type of contents
+
+    -And we need to import BurgerIngredient.css classes to start using them
+
+    -Then we populate our switch statement with a case for each ingrdient.  
+
+    -And we simply state case:
+     (' ingredientName') : ingredient = <div className={classes.ingredientName}></div>
+    
+    And we repeat that for all the main ingredients 
+
+    With Bread-top we enclose two child divs which are given Seeds1 and Seeds2 classes.  
+
+    Then we assign a default: case of ingredient = null;
+
+    And then outside the switch statement we return ingredient 
+
+And moving on:
