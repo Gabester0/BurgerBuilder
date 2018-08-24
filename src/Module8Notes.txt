@@ -186,3 +186,102 @@ This Lecture:
     And then outside the switch statement we return ingredient 
 
 And moving on:
+
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 114 : Using Proptypes to validate types  \\
+/////////////////////////////////////////////////////////////////////  
+
+So first we will:
+    -Import PropTypes (from 'prop-types') package into our App.js file
+
+    -Now to use this we need to change const to class to use the PropTypes
+    
+    -Now this isn't going to change the fact that it is a stateless/dumb component.  
+        -just the terminology.
+
+    -We don't necessarily determine whether a component is a functional or stateful by 
+        whether or not it is declared with the Class keyword or function terminology.  
+    
+    -It is just often done that way.  
+
+    -Don't forget the naming convention is that a component is lowercase if it is a function 
+        and it is capitol if it is class extends Component
+
+    -And we don't need (props) because Class declared variables have access to Props.  
+
+    -And we need to add the render(){ } statement.  
+
+    -Then we move all the code inside the render tag
+
+    -And we add , { Component } to our React import statement 
+
+    -Change props.type at the start of the switch statement to this.props.type (Stateful now)
+
+    -And Now after the render tag is closed we create Props Validation:
+
+    -BurgerIndredient.propTypes = {} using lowercase p. 
+
+    -and then inside type: PropTypes.string.isRequired 
+
+    Thus requiring that the proptype must always be string.  
+
+And on to 116:
+
+
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 116 : Building the Burger!      \\
+/////////////////////////////////////////////////////////////////////
+
+So now we will start working on the Burger.js file:
+
+    -So this will be a function component so a lowercase b 
+
+    -const burger = (props)=>{ }
+
+    -we will return a div which will contain all burgerIngredient 
+
+    - the div will allow us to set the actual size of the burger ingredients
+
+    -and we will export default burger 
+
+    -Now we will create an adjacent Burger.css file
+
+    -give it a .Burger class and set width 100%, margin auto, height limited (250px?), and overflow to scroll
+
+    -this way if we build a really big burger we can scroll to see all of it.  
+
+    -And we will also set text-align: center, font-weight: bold, and text-size: 1.2 rem 
+
+    -And we will add a media query for min-width 1000px and min-height 700px
+
+    -and set Burger width: 700px height: 600px
+
+    -And we will set another smaller media query as well
+
+    -Once we are finished setting media queries we will import classes into Burger.js
+
+    -And assign the .Burger class as the className to the div.
+
+    -now we can start adding ingredients
+
+    -First we import BurgerIndredient 
+
+    -And then use BurgerIndredient as  a self-closing tag inside the div.  
+
+    -We have four BurgerIngredient components
+
+    -With type="string" we determine which Burger Parts are which.  
+
+    -Having built a burger we head to the BurgerBuilder.js file to render it
+
+    -There we first import Burger.js  
+
+    -Now we just replace our first dummy div with a <Burger tag>
+
+    -Now when we launch the app we have a visual burger.
+
+    -It is hard coded though which isn't great.
+
+    -But it is a start
