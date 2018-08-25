@@ -285,3 +285,51 @@ So now we will start working on the Burger.js file:
     -It is hard coded though which isn't great.
 
     -But it is a start
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 117 :  Handling Burger Ingredients via State \\
+/////////////////////////////////////////////////////////////////////
+
+
+So we can use the classic syntax to initialize state:
+    constructor(props){
+        super(props);
+        this.state={
+
+        }
+    }
+
+But we are going to go the more modern and shorter syntax of state={ }
+
+    -And we are going to start with ingredients: {js object}
+    -And then assign ingredients with key(string): value(quantity) pairs
+
+    -Now we have ingredietns in state
+
+    -so now we want to pass this to the Burger
+
+    -So to do this we look at Burger.js 
+
+    -We can't use the map method because ingredients in state aren't an array
+
+    -So we need to transform the object in state into an array.  
+
+    -So we are going to make a constant called transformedIngredients inside the Burger 
+
+    -Then we are going to assign the Global Object as the value and then apply some methods to it
+
+    -So first the keys object with .keys( )
+
+    -And then we will say to extract the keys from props.ingredients (and then when we use this
+    Burger component in BurgerBuilder we will assign state as the props value)
+
+    -And we will also chain .map() method to it also (because the keys method returns to us
+        an array)
+
+    -So the map function executes a function we are about to define on each element in the
+        arry.  Because all our elements are ingredients and the keys for them we will give
+        them the name igKey for ingredient key
+    
+    -Too confusing to take notes on.  Watch video from 5:14 to end if notes are needed.
+    
+
