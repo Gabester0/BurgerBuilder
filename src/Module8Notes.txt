@@ -339,6 +339,7 @@ note:
 /////////////////////////////////////////////////////////////////////
 
 
+
 Last Lecture we got our app to render burger ingredients based on what is in state.  
 
     -What if we have no ingredients in state yet? 
@@ -384,3 +385,37 @@ Last Lecture we got our app to render burger ingredients based on what is in sta
 
     -and now if ingredients = 0 we will write this:
         transformedIngredients = <p>Please start adding ingredients!</p>           
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 119 : Adding Build Controls                \\
+/////////////////////////////////////////////////////////////////////
+
+First we will add A new subfolder to Components and call it BuildControls
+
+    -And we will add BuildControls.js file 
+
+    -It will be a functional component so we will define it as a function stored in the 
+        const buildControls 
+    
+    -We import React and export default buildControls
+
+    -And we put a div inside the functions return statement
+    
+    -add a BuildControls.css file with a .BuildControls css ruleset and give the Controls
+        some style.  
+
+    -Now: For actual build Controls:  We will probably want to outsource this component to
+        make this it reuseable
+
+    -So we will add a BuildControl folder, a BuildControl.js file, and a BuildControl.css file
+
+    -So we will create BuildControl.js just like BuildControls.  Functional, will rcv props
+
+    -Inside we will use a div for wrapping and for styling.  
+
+    -And then inside this we will have a div that will dynamically return text
+        -because this is a button label we will assign it the name label {props.label}
+
+    -Then 2 button tags labelled Less and More to adjust ingredients up or down in quantity
+
+    -
