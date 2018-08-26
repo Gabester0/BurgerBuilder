@@ -331,5 +331,56 @@ But we are going to go the more modern and shorter syntax of state={ }
         them the name igKey for ingredient key
     
     -Too confusing to take notes on.  Watch video from 5:14 to end if notes are needed.
-    
+note: 
+    -was missing ingredients={this.state.ingredients} inside burger tag in BurgerBuilder    
 
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 118 : Adding Ingredient Sums Dynamically     \\
+/////////////////////////////////////////////////////////////////////
+
+
+Last Lecture we got our app to render burger ingredients based on what is in state.  
+
+    -What if we have no ingredients in state yet? 
+
+    -We want to show a message to start adding indredients then. 
+
+    -So we set state/ingredients to zero in BurgerBuilder
+
+    -and then in Burger.js we console.log transformedIngredients and we get this
+        Array(4)0: []1: []2: []3: []length: 4__proto__: Array(0)
+    
+    -an Empty Array.  four of them.
+
+    - so if we checked the length of transformedIngredients we would get 4
+
+    -but that is the same result as if we checked length when we had 2 of every ingredient
+
+    -Because the ingredients in inside arrays inside the array.  
+
+    -So we need to consolidate or reduce them
+
+    -There is a method for that, the reduce method!
+
+    -Reduce is a built in array function
+
+    -allows us to transform an array
+
+    -It receives a function as input which receives 2 arguments
+        ex:
+            .reduce(    (arr,       el),        [])
+                      arg1/\     arg2/\     an in/\
+                    prev. value curr. value itial value 
+
+    -What the reduce method does is loop through all the elements and add them to the 
+        initial value step by step.  
+
+    -And now after the reduce method we have one-level-deep ingredient array that we can
+        check the length of and dynamically render things based on 
+    so if (transformedIngredients === 0 ){ then we prompt to add ingredients}
+
+    -and We will changed the transformedIngredients from const to let (because otherwise
+    our changing the array wouldn't do anything.  ) 
+
+    -and now if ingredients = 0 we will write this:
+        transformedIngredients = <p>Please start adding ingredients!</p>           
