@@ -419,3 +419,30 @@ First we will add A new subfolder to Components and call it BuildControls
     -Then 2 button tags labelled Less and More to adjust ingredients up or down in quantity
 
     -
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 120 : Outputting multiple Build Controls   \\
+/////////////////////////////////////////////////////////////////////
+
+
+So first of all:
+
+    -We want to create an array of js objects for each ingredient
+
+    -Each ingredient object will have label which is how we want the label text written
+        with a capitol letter, etc.  
+    -And a type which should character by character match the switch statement cases 
+
+    -And we will import classes from BuildControl.css add the class to the div inside the return
+
+    -And we will import BuildControl singular
+
+    -and we will map our contorls array to return all our Controls
+
+    -And we will render a BuildControl component for each object in the controls array.
+
+    -We can use the label as the key for each one since we won't repeat a label.  
+
+-Now we jumb to our BurgerBuilder.js file. 
+
+    -import BuildControls 
