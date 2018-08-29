@@ -446,3 +446,11 @@ So first of all:
 -Now we jumb to our BurgerBuilder.js file. 
 
     -import BuildControls 
+
+
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 121 : Connecting State to BuildControls   \\
+/////////////////////////////////////////////////////////////////////
+
+Typically you name constants that you want to use as global constants with all capitol letters.
+
