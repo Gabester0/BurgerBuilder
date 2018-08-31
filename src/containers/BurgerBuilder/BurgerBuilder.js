@@ -29,7 +29,7 @@ addIngredientHandler = (type) =>{
     const updatedIngredients = { ...this.state.ingredients };
     updatedIngredients[type] = updatedCount;
     const priceAddtn = INGREDIENT_PRICES[type];
-    const oldPrice = this.state.ingredients.totalPrice;
+    const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAddtn;
     this.setState({totalPrice: newPrice, ingredients: updatedIngredients})
 }
@@ -43,7 +43,7 @@ removeIngredientHandler = (type) =>{
     const updatedIngredients = { ...this.state.ingredients };
     updatedIngredients[type] = updatedCount;
     const priceDdctn = INGREDIENT_PRICES[type];
-    const oldPrice = this.state.ingredients.totalPrice;
+    const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice - priceDdctn;
     this.setState({totalPrice: newPrice, ingredients: updatedIngredients})
 
@@ -62,7 +62,8 @@ removeIngredientHandler = (type) =>{
                 <BuildControls
                 ingredientAdded={this.addIngredientHandler}  
                 ingredientRemoved={this.removeIngredientHandler}   
-                disabled={disableInfo}  /> 
+                disabled={disableInfo}  
+                price={this.state.totalPrice}/> 
             </Auxilliary>
         );
     }
