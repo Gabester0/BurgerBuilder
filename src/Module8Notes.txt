@@ -455,6 +455,10 @@ So first of all:
 Typically you name constants that you want to use as global constants with all capitol letters.
 
 /////////////////////////////////////////////////////////////////////
-//  Module 8 : Lesson 124 : Adding Checkout Button   \\
+//  Module 8 : Lesson 127 : Adding Backdrop   \\
 /////////////////////////////////////////////////////////////////////
+
+You may return null in a functional element.  This just results in nothing being rendered.
+(ex:    const funcElement = (props) => {
+                                props.show ? <div>props.children</div> : null   })
 
