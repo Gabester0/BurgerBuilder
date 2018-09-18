@@ -462,3 +462,26 @@ You may return null in a functional element.  This just results in nothing being
 (ex:    const funcElement = (props) => {
                                 props.show ? <div>props.children</div> : null   })
 
+/////////////////////////////////////////////////////////////////////
+//  Module 8 : Lesson 132 : Using a Burger Logo with Webpack   \\
+/////////////////////////////////////////////////////////////////////
+
+We are using the BurgerLogo we downloaded
+
+    We stored it inside the src folder / assets / images / burger-logo.  
+
+        We are using the Logo.js file to display this logo.
+
+            This is a functional component.  
+
+                Now traditional development experience would tell us to simply have a folder 
+                    where images are saved and then when we need an image we reference its 
+                    location in the folder under src attribute of this image.
+
+                        But we just using the current folder structure for development.  when
+                        we run the build function Webpack is going to condense and rearrange
+                        all of our code and the assets/images folder will disappear.  The contents
+                        will still be accessible but only Webpack will know where to look for
+                        them.  So we want to be sure Webpack knows about our image, so we will 
+                        import the image into our Logo.js file.  This way webpack can find it.  
+    
