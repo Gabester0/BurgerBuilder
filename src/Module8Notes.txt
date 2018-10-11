@@ -485,3 +485,29 @@ We are using the BurgerLogo we downloaded
                         them.  So we want to be sure Webpack knows about our image, so we will 
                         import the image into our Logo.js file.  This way webpack can find it.  
     
+//////////////////////////////////////////////////////////////////////////
+//Module 8 : Lesson 142 :Improving our Application: Prop-Type Validation\\
+//////////////////////////////////////////////////////////////////////////
+
+Right now in our project we aren't using prop-type validation in any of our components other
+than in burgerIngredients file.  There we do set the type.  Because it is set it is required.  
+And then we are validating that the prop-type is a string. 
+
+Some factors that affect this choice:
+    -We aren't working with anyone else on this project.  Just Max and the student.  
+
+    -We aren't working on a team with other developers.
+
+    -We aren't working on a project that will be in a library that will be used by other people.  
+
+Therefore Props used incorrectly isn't a great concern for anyone.  If we do use prop-types incorrectly
+we will get a logical error until we fix it.  
+
+No reason here not to use prop-type validation.  But there aren't any good reasons to go to that 
+effort and do that here.  
+
+But keep in mind that to implement proptype validation you will need to convert functions from functional 
+to stateful/class-based components.  
+
+It is good form to keep as many of your components as possible stateless/functional.  
+
