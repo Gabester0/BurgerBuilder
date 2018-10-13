@@ -511,3 +511,30 @@ to stateful/class-based components.
 
 It is good form to keep as many of your components as possible stateless/functional.  
 
+//////////////////////////////////////////////////////////////////////////
+//   Module 8 : Lesson 143: Improving our Application: Performance   \\
+//////////////////////////////////////////////////////////////////////////
+
+So if we look at our app.  One thing to think about and look at is do we re-render unecessarily?  
+
+For the most part we only re-render when we change the UI which is a justifiable reason.  
+
+And if we wanted to use Component Lifecycle hooks to prevent any unecessary re-rendering we would need to use 
+Class components instead of functional components which would be less efficient and performant.  
+
+The one area where this isn't true and we re-render needlessly is in BurgerBuilder.js file
+where the Modal.js wraps the OrderSummary.  This means that every time the ingredients 
+change the order summary is re-rendered.  But unless the modal is displayed this isn't 
+helpful.  
+
+So first we need to add a Lifecycle hook to OrderSummary to know when it is being 
+re-rendered.  
+
+So we first re-write OrderSummary as a class component.  
+
+That done we add the componentWillUpdate method with a simple console.log inside.  
+
+Now we see that every single time an ingredient is added or removed the component will update.
+
+But modal isn't even visible!
+
