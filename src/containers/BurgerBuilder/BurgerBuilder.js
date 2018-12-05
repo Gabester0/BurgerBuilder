@@ -83,29 +83,30 @@ purchaseCancelHandler = () => {
 }
 
 purchaseContinueHandler = () =>{
-    this.setState( { loading: true } );
-    const order = {
-        ingredients: this.state.ingredients,
-        price: this.state.totalPrice,
-        customer: {
-            name: "Gabe Eipper",
-            address: {
-                street: 'testStreet Suite',
-                country: 'US',
-                state: 'PA',
-                zip: 17011
-            },
-            email: 'test@test.com',
-        },
-        delivery: 'fastest'
-    }
-    axios.post('/orders.json', order)
-    .then(response => { this.setState( { loading: false , purchasing: false} );
-    } )
-    .catch(err => {
-        console.log(err);
-        this.setState( { loading: false , purchasing: false} );
-    });
+    // this.setState( { loading: true } );
+    // const order = {
+    //     ingredients: this.state.ingredients,
+    //     price: this.state.totalPrice,
+    //     customer: {
+    //         name: "Gabe Eipper",
+    //         address: {
+    //             street: 'testStreet Suite',
+    //             country: 'US',
+    //             state: 'PA',
+    //             zip: 17011
+    //         },
+    //         email: 'test@test.com',
+    //     },
+    //     delivery: 'fastest'
+    // }
+    // axios.post('/orders.json', order)
+    // .then(response => { this.setState( { loading: false , purchasing: false} );
+    // } )
+    // .catch(err => {
+    //     console.log(err);
+    //     this.setState( { loading: false , purchasing: false} );
+    // });
+    this.props.history.push('/checkout');
 }
 
     render () {
