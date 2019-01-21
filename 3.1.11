@@ -1,4 +1,4 @@
 + webpack-dev-server@2.11.3
-updated 2 packages and audited 14353 packages in 16.994s
+updated 1 package and audited 14353 packages in 15.084s
 found 1 high severity vulnerability
   run `npm audit fix` to fix them, or `npm audit` for details
