@@ -6,6 +6,8 @@ import classes from './ContactData.css';
 import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import * as actions from '../../../store/actions/index';
 
 class ContactData extends Component {
 
@@ -47,7 +49,8 @@ class ContactData extends Component {
                 validation : {
                     required : true,
                     minLength : 5,
-                    maxLength : 5
+                    maxLength : 5,
+                    isNumeric: true,
                 },
                 valid : false,
                 touched : false
@@ -73,7 +76,8 @@ class ContactData extends Component {
                 },
                 value: "",
                 validation : {
-                    required : true
+                    required : true,
+                    isEmail: true,
                 },
                 valid : false,
                 touched : false
@@ -86,45 +90,81 @@ class ContactData extends Component {
                         {value : "cheapest", displayValue : "Cheapest"}
                     ]
                 },
-                value: "",
+                value: "fastest",
+                validation: {},
                 valid: true,
-                validation : {
-                    required : true
-                }
-            }
+            },
         },
         formIsValid : false,
-        loading: false
-    }
+    };
 
     orderHandler = (event) => {
         event.preventDefault();
-        console.log(this.props.ings);
-     this.setState( { loading: true } );
-     const order = {
-         ingredients: this.props.ings,
-         price: this.props.price,
-         customer: {
-             name: "Gabe Eipper",
-             address: {
-                 street: 'testStreet Suite',
-                 country: 'US',
-                 state: 'PA',
-                 zip: 17011
-             },
-             email: 'test@test.com',
-         },
-         delivery: 'fastest'
-     }
-     axios.post('/orders.json', order)
-     .then(response => { this.setState( { loading: false} );
-     this.props.history.push('/');
-     } )
-     .catch(err => {
-         console.log(err);
-         this.setState( { loading: false} );
-     });
+
+        const formData = {};
+        for(let formElementIdentifier in this.state.orderForm){
+            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
+        };
+
+        const order = {
+            ingredients: this.props.ings,
+            price: this.props.price,
+            orderData: formData
+            };
+
+        this.props.onOrderBurger(order);
+    };
+
+    checkValidity(value, rules) {
+        let isValid = true;
+        if (!rules) {
+            return true;
+        }
+        
+        if (rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid
+        }
+
+        if (rules.isEmail) {
+            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid
+        }
+
+        if (rules.isNumeric) {
+            const pattern = /^\d+$/;
+            isValid = pattern.test(value) && isValid
+        }
+
+        return isValid;
     }
+
+    inputChangedHandler = (event, inputIdentifier) => {
+        const updatedOrderForm = {
+            ...this.state.orderForm
+        };
+        const updatedFormElement = { 
+            ...updatedOrderForm[inputIdentifier]
+        };
+        updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        updatedFormElement.touched = true;
+        updatedOrderForm[inputIdentifier] = updatedFormElement;
+        
+        let formIsValid = true;
+        for (let inputIdentifier in updatedOrderForm) {
+            formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+        }
+        this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
+    }
+
 
     render(){
         const formElementsArray = [];
@@ -135,7 +175,8 @@ class ContactData extends Component {
             });
         }
 
-        let form = ( <form onSubmit={this.orderHandler}>
+        let form = (
+        <form onSubmit={this.orderHandler}>
             {formElementsArray.map(formElement => (
                 <Input
                     key={formElement.id}
@@ -149,9 +190,12 @@ class ContactData extends Component {
                 />
             )
             )}
-            <Button btnType="Success" disabled={!this.state.formIsValid} clicked={this.orderHandler}>ORDER</Button>
+            <Button btnType="Success"
+                disabled={!this.state.formIsValid}
+                clicked={this.orderHandler}>
+            ORDER</Button>
         </form>);
-        if(this.state.loading){
+        if(this.props.loading){
             form = <Spinner/>;
         }
         return (
@@ -165,9 +209,16 @@ class ContactData extends Component {
 
 const mapStateToProps = state =>{
     return {
-        ings: state.ingredients,
-        price: state.totalPrice
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        laoding: state.order.loading,
     }
 }
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch =>{
+    return {
+        onOrderBurger: (orderData)=> dispatch( actions.purchaseBurger(orderData) )
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)( withErrorHandler( ContactData, axios ) );
